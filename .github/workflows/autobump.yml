@@ -5,6 +5,7 @@
 # - runner を ubuntu-latest ではなく macOS にする。bump 時の `brew audit` が dmg を
 #   hdiutil で開き、plutil で LSMinimumSystemVersion を読むため (どちらも macOS 専用)
 # - 手動実行用に workflow_dispatch を足す
+# - schedule を毎日ではなく週 1 にする (リリース頻度が低く、毎日の macOS runner は過剰)
 name: brew bump
 
 on:
@@ -14,8 +15,8 @@ on:
     paths:
       - .github/workflows/autobump.yml
   schedule:
-    # Every day at 19:40 UTC
-    - cron: 40 19 * * *
+    # Every Monday at 19:40 UTC
+    - cron: 40 19 * * 1
   workflow_dispatch:
 
 permissions: {}
