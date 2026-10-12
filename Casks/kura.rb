@@ -12,22 +12,19 @@ cask "kura" do
     strategy :github_latest
   end
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   app "Kura.app"
 
   # Kura は ad-hoc 署名 (notarize なし) のため、quarantine 属性を自動で剥がして
   # Gatekeeper の「開発元が未確認」警告を回避する (本体 README の手動手順の自動化)
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Kura.app"]
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Kura.app"]
   end
 
   uninstall quit: "io.github.ymnao.kura"
 
-  zap trash: [
-    "~/Library/Preferences/io.github.ymnao.kura.plist",
-  ]
+  zap trash: "~/Library/Preferences/io.github.ymnao.kura.plist"
 
   caveats <<~EOS
     Kura is distributed with an ad-hoc signature (not notarized).
