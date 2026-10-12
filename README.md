@@ -45,7 +45,7 @@ Cask に記録した `sha256` で検証し、一致しなければインスト�
 - **新しいリリースの最小 macOS が上がったとき** (arch 別 dmg の scripta)。bump 時の
   `brew audit` が dmg の `LSMinimumSystemVersion` と Cask の `depends_on macos:` の
   食い違いを検出して bump を中止し、workflow が失敗する。Cask の `depends_on macos:` を
-  上げる PR を手で出してから、workflow を手動実行する
+  上げる PR を手で出して merge してから、workflow を手動実行する
   (scripta は v0.7.0 が Electron 43 = `:monterey`、次のリリースから Electron 44 = `:ventura`)
 - **repo に 60 日間動きが無いとき**。GitHub は public repo の schedule workflow を
   自動で無効化する。Actions タブから workflow を有効化し直す
