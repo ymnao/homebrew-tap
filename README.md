@@ -40,6 +40,16 @@ Cask に記録した `sha256` で検証し、一致しなければインスト�
 [`.github/workflows/autobump.yml`](.github/workflows/autobump.yml) が毎日 `brew bump` を実行し、
 各プロジェクトの最新リリースを検出すると Cask の version / sha256 を更新する PR を開く。
 
+自動 bump が止まるケース:
+
+- **新しいリリースの最小 macOS が上がったとき** (arch 別 dmg の scripta)。bump 時の
+  `brew audit` が dmg の `LSMinimumSystemVersion` と Cask の `depends_on macos:` の
+  食い違いを検出して bump を中止し、workflow が失敗する。Cask の `depends_on macos:` を
+  上げる PR を手で出してから、workflow を手動実行する
+  (scripta は v0.7.0 が Electron 43 = `:monterey`、次のリリースから Electron 44 = `:ventura`)
+- **repo に 60 日間動きが無いとき**。GitHub は public repo の schedule workflow を
+  自動で無効化する。Actions タブから workflow を有効化し直す
+
 ## ライセンス
 
 [MIT](LICENSE)

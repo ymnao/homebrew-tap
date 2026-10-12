@@ -1,8 +1,9 @@
 # `brew tap-new` が生成する autobump テンプレート (Homebrew 7.0.9) をもとにしている。
 # テンプレートとの差分:
-# - formulae ではなく casks を対象にする (この tap は Cask のみ)
-# - runner を ubuntu-latest ではなく macOS にする。bump 時の `brew audit` が dmg を開いて
-#   LSMinimumSystemVersion を読み、`depends_on macos:` と食い違えば bump を止めるため
+# - formulae ではなく casks を対象にする (この tap は Cask のみ)。formula 専用の
+#   --bump-synced は外す
+# - runner を ubuntu-latest ではなく macOS にする。bump 時の `brew audit` が dmg を
+#   hdiutil で開き、plutil で LSMinimumSystemVersion を読むため (どちらも macOS 専用)
 # - 手動実行用に workflow_dispatch を足す
 name: brew bump
 
