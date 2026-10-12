@@ -1,9 +1,9 @@
 cask "scripta" do
   arch arm: "-arm64"
 
-  version "0.7.0"
-  sha256 arm:   "1aeebd384556b413b03a1f88e7bb539692076a6e90f963ec846a7a1f1371c8e4",
-         intel: "9880fcd80634036ff5e29bb8ad0e3401076f8a0dc3614d02638857cd8e35e649"
+  version "0.8.0"
+  sha256 arm:   "84d8e29c7f8961eb769af49d4e120bab6eb6a566b2be9a4fa711876d1a6dc6af",
+         intel: "e03e435ab8d631b0783422a2fef631d5b7b0cb30da0c244e26d72fe48ad04c49"
 
   url "https://github.com/ymnao/scripta/releases/download/v#{version}/scripta-#{version}#{arch}.dmg"
   name "scripta"
