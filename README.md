@@ -37,7 +37,7 @@ Cask に記録した `sha256` で検証し、一致しなければインスト�
 
 ## 自動更新
 
-[`.github/workflows/autobump.yml`](.github/workflows/autobump.yml) が毎日 `brew bump` を実行し、
+[`.github/workflows/autobump.yml`](.github/workflows/autobump.yml) が毎週月曜 (19:40 UTC) に `brew bump` を実行し、
 各プロジェクトの最新リリースを検出すると Cask の version / sha256 を更新する PR を開く。
 
 自動 bump が止まるケース:
